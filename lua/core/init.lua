@@ -1,4 +1,4 @@
 require("core.remap")
-print("hello from the core")
+require("core.set")
 
 
