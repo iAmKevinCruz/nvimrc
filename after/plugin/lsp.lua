@@ -2,10 +2,22 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+require'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+}
+
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
-  'theme_check'
+  'theme_check',
+  'eslint'
 })
 
 -- Fix Undefined global 'vim'
@@ -19,6 +31,15 @@ lsp.configure('lua-language-server', {
     }
 })
 
+-- Trying to make liquid work
+-- lsp.configure('html', {
+--     filetypes = { 'liquid' }
+-- })
+-- lsp.configure('theme_check', {
+--     root_dir = function(fname)    
+--         return vim.loop.cwd()
+--     end;
+-- })
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -60,6 +81,26 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+-- from DJ
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig/configs')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'liquid' },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
 
 lsp.setup()
 

@@ -1,12 +1,15 @@
+local map = vim.keymap.set
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+vim.keymap.set("n", "<leader>h", mark.add_file)
+vim.keymap.set("n", "<leader>hs", ui.toggle_quick_menu)
 
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
 
+-- Shortcut to use numbers for harpoon
+for i=0,9 do
+   vim.keymap.set("n", '<leader>h'..i, function ()
+        ui.nav_file(i)
+   end)
+end

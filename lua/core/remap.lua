@@ -5,6 +5,16 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Save shortcut
+vim.keymap.set("n", "<C-s>", ":wa<CR>")
+
+-- terminal mappings
+vim.keymap.set('n', '<leader>;', ':bo sp<CR>:resize 10<CR>:term<CR>i')  ----------------------  opens a terminal at the bottom of all windows
+vim.cmd([[ autocmd TermClose * execute "bdelete! " . expand("<abuf>") ]])  --------  closes the terminal without showing process exited and requiring <CR>
+
+-- Nvim Tree Map Stuff
+vim.keymap.set('n', '<leader>b', ':NvimTreeToggle')
+
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

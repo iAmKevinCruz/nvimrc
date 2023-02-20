@@ -4,6 +4,15 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+
+  -- Ref: https://github.com/wbthomason/packer.nvim/issues/739#issuecomment-1019280631
+  vim.o.runtimepath = vim.fn.stdpath('data') .. '/site/pack/*/start/*,' .. vim.o.runtimepath
+end
+
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -15,28 +24,22 @@ return require('packer').startup(function(use)
   }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
+    -- Navigation
   use('nvim-treesitter/playground')
   use('thePrimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('tpope/vim-commentary')
-   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  require("rose-pine").setup()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+  use('tpope/vim-surround')
+  use('tpope/vim-liquid')
   use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {'williamboman/mason.nvim'},           -- Optional
-		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v1.x',
+      requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},             -- Required
+          {'williamboman/mason.nvim'},           -- Optional
+          {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
 		  -- Autocompletion
 		  {'hrsh7th/nvim-cmp'},         -- Required
@@ -52,5 +55,26 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  -- Color Things
+  -- use({
+  --     'rose-pine/neovim',
+  --     as = 'rose-pine',
+  --     config = function()
+  --         require("rose-pine").setup()
+  --         vim.cmd('colorscheme rose-pine')
+  --     end
+  -- })
+  use "rktjmp/lush.nvim"
+  use "rockyzhang24/arctic.nvim"
+
+  -- Needs organizing
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+          'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  use('xiyaowong/nvim-transparent')
 end)
 
