@@ -24,6 +24,10 @@ return require('packer').startup(function(use)
   }
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+
+  -- Shinanigans
+  use('ThePrimeagen/vim-be-good')
+
     -- Navigation
   use('nvim-treesitter/playground')
   use('thePrimeagen/harpoon')
@@ -55,7 +59,7 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  -- Color Things
+  -- Beautify
   -- use({
   --     'rose-pine/neovim',
   --     as = 'rose-pine',
@@ -66,6 +70,7 @@ return require('packer').startup(function(use)
   -- })
   use "rktjmp/lush.nvim"
   use "rockyzhang24/arctic.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Needs organizing
   use {
