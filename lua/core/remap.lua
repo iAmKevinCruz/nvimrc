@@ -11,9 +11,11 @@ vim.keymap.set("n", "<C-s>", ":wa<CR>")
 -- terminal mappings
 vim.keymap.set('n', '<leader>;', ':bo sp<CR>:resize 10<CR>:term<CR>i') ----------------------  opens a terminal at the bottom of all windows
 vim.cmd([[ autocmd TermClose * execute "bdelete! " . expand("<abuf>") ]]) --------  closes the terminal without showing process exited and requiring <CR>
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
 
 -- Nvim Tree Map Stuffmap
-vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
 -- Split window controls
 vim.keymap.set('n', '<leader>sv', '<C-w>v') -- split window vertically
@@ -28,6 +30,9 @@ vim.keymap.set('n', '<leader>sx', ':close<CR>') -- close split pane
 -- Number increments
 vim.keymap.set('n', '<leader>+', '<C-a>')
 vim.keymap.set('n', '<leader>-', '<C-x>')
+
+-- vim-maximizer
+vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- Tab inside nvim controls
 vim.keymap.set("n", "<leader>to", ':tabnew<CR>') -- open new tab
@@ -52,7 +57,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Clear search highjlight
-vim.keymap.set("n", "<leader>c", ':nohlsearch<CR>')
+vim.keymap.set("n", "<leader>nh", ':nohlsearch<CR>')
+
+-- Easy quit
+vim.keymap.set("n", "<leader>q", ':q<CR>')
 
 -- Close brackets and quotes
 -- vim.keymap.set("i", "{", "{{$1}}")
