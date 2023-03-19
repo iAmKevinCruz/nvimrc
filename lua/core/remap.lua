@@ -13,7 +13,6 @@ vim.keymap.set('n', '<leader>;', ':bo sp<CR>:resize 10<CR>:term<CR>i') ---------
 vim.cmd([[ autocmd TermClose * execute "bdelete! " . expand("<abuf>") ]]) --------  closes the terminal without showing process exited and requiring <CR>
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
-
 -- Nvim Tree Map Stuffmap
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
@@ -37,8 +36,12 @@ vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window
 -- Tab inside nvim controls
 vim.keymap.set("n", "<leader>to", ':tabnew<CR>') -- open new tab
 vim.keymap.set("n", "<leader>tx", ':tabclose<CR>') -- close tab
-vim.keymap.set("n", "<leader>tn", ':tabn<CR>') -- go to next tab
-vim.keymap.set("n", "<leader>tp", ':tabp<CR>') -- go to prev tab
+vim.keymap.set("n", "<A-.>", ':tabn<CR>') -- go to next tab
+vim.keymap.set("n", "<A-,>", ':tabp<CR>') -- go to prev tab
+vim.keymap.set("n", "<A->>", ':+tabmove<CR>') -- move tab to the right
+vim.keymap.set("n", "<A-<>", ':-tabmove<CR>') -- move tab to the left
+-- vim.keymap.set("n", "<leader>tn", ':tabn<CR>') -- go to next tab
+-- vim.keymap.set("n", "<leader>tp", ':tabp<CR>') -- go to prev tab
 
 -- Tab lines from visual mode
 vim.keymap.set("v", "<Tab>", '>') -- Tab Forward. Use '.' to repeat

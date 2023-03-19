@@ -56,7 +56,7 @@ require("catppuccin").setup({
         nvimtree = true,
         telescope = true,
         notify = false,
-        mini = false,
+        mini = true,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
@@ -109,7 +109,6 @@ require'nvim-web-devicons'.setup {
     }
   };
 }
-
 
 function ColorMyPencils(color)
   if type(color) == "string" then

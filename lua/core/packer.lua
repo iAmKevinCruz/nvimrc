@@ -25,6 +25,9 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- web icons.used by many plugins
+  use 'nvim-tree/nvim-web-devicons'
+
   -- Treesitter and friends
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use ('nvim-treesitter/nvim-treesitter-context')
@@ -32,7 +35,7 @@ return require('packer').startup(function(use)
   -- Shinanigans
   use('ThePrimeagen/vim-be-good')
 
-  -- Quality of life
+  -- autosession is used for saving and restoring vim sessions
   use {
     'rmagatti/auto-session',
     config = function()
@@ -42,6 +45,20 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  -- saves a db of all yanks
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'kkharji/sqlite.lua', module = 'sqlite'},
+      {'nvim-telescope/telescope.nvim'},
+    },
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
+
+  -- Quality of life
   use {
     'rmagatti/session-lens',
     requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
@@ -85,6 +102,7 @@ return require('packer').startup(function(use)
 
   -- LSP and Autocompletion
   use('tpope/vim-liquid')
+  use('j-hui/fidget.nvim')
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
   use({
     "glepnir/lspsaga.nvim",
@@ -117,8 +135,8 @@ return require('packer').startup(function(use)
     }
   }
 
-  -- adds line under the cursor word
-  use('yamatsum/nvim-cursorline')
+  -- adds line under the cursor word and much more in this little package
+  use ('echasnovski/mini.nvim')
 
     -- Navigation
   use('nvim-treesitter/playground')
@@ -130,7 +148,7 @@ return require('packer').startup(function(use)
   -- Beautify
   use { "catppuccin/nvim", as = "catppuccin" }
   -- use "rockyzhang24/arctic.nvim"
-  use 'nvim-tree/nvim-web-devicons'
+  -- use 'nvim-tree/nvim-web-devicons'
   use "lukas-reineke/indent-blankline.nvim"
 
   -- Needs organizing
