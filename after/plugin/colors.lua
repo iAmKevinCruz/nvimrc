@@ -29,6 +29,9 @@ require("catppuccin").setup({
         operators = {},
     },
     color_overrides = {
+        all = {
+          htmlH1 = '#fff'
+        }
       -- mocha = {
 					-- base = "#000000",
 					-- mantle = "#000000",
@@ -57,6 +60,7 @@ require("catppuccin").setup({
         telescope = true,
         notify = false,
         mini = true,
+        markdown = true,
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })

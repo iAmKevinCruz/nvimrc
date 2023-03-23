@@ -122,6 +122,7 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
+  print('test lsp on_attach')
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -148,11 +149,58 @@ lspconfig.emmet_ls.setup({
     init_options = {
       html = {
         options = {
-          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          -- for possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#l79-l267
           ["bem.enabled"] = true,
         },
       },
     }
+})
+
+-- need to figure out this config. root always comes back not found
+lspconfig.theme_check.setup {
+  cmd = { 'theme-check-liquid-server' },
+  capabilities = capabilities,
+  filetypes = { 'liquid' },
+  root_dir = lspconfig.util.find_git_ancestor
+  -- root_dir = function(fname)
+  --   return lspconfig.util.find_git_ancestor(fname)
+  -- end,
+  -- root_dir = function(fname)
+  --   return vim.loop.cwd()
+  -- end
+  -- root_dir = function(startpath)
+  --   return M.search_ancestors(startpath, matcher)
+  -- end
+}
+
+lspconfig.marksman.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'marksman', 'server' },
+    filetypes = { 'markdown' },
+    -- root_dir = root_pattern('.git','.marksman.toml'),
+    single_file_support = true,
+    -- init_options = {
+    --   html = {
+    --     options = {
+    --       -- for possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#l79-l267
+    --       ["bem.enabled"] = true,
+    --     },
+    --   },
+    -- }
+})
+
+lspconfig.grammarly.setup({
+  cmd = { "grammarly-languageserver", "--stdio" },
+  filetypes = { "markdown" },
+  -- handlers = {
+  --   ["$/updateDocumentState"] = <function 1>
+  -- },
+  init_options = {
+    clientId = "client_BaDkMgx4X19X9UxxYRCXZo"
+  },
+  root_dir = lspconfig.util.find_node_modules_ancestor,
+  single_file_support= true
 })
 
 lsp.setup()
@@ -161,6 +209,7 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+vim.lsp.set_log_level("debug")
 
 -- restart lsp server (not on youtube nvim video)
 vim.keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary

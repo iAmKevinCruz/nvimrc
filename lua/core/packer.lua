@@ -58,6 +58,21 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- auto save. will configure to work only in markdown
+  -- use('Pocco81/auto-save.nvim')
+
+  -- Obsdian plugin for nvim
+  use('epwalsh/obsidian.nvim')
+  use('godlygeek/tabular') -- needed by vim-markdown
+  use('preservim/vim-markdown') -- recommended for syntax highlighting, folding, etc if you're not 
+  -- install without yarn or npm
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  -- use('vim-pandoc/vim-pandoc-syntax') -- needed by vim-markdown
+  -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+
   -- Quality of life
   use {
     'rmagatti/session-lens',
@@ -89,8 +104,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-  use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
-
   use("szw/vim-maximizer") -- maximizes and restores current window
 
   -- git integration
@@ -101,7 +114,7 @@ return require('packer').startup(function(use)
   use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
   -- LSP and Autocompletion
-  use('tpope/vim-liquid')
+  -- use('tpope/vim-liquid')
   use('j-hui/fidget.nvim')
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
   use({
@@ -144,14 +157,7 @@ return require('packer').startup(function(use)
   use ('chentoast/marks.nvim')
   use('tpope/vim-fugitive')
   use('tpope/vim-surround')
-
-  -- Beautify
-  use { "catppuccin/nvim", as = "catppuccin" }
-  -- use "rockyzhang24/arctic.nvim"
-  -- use 'nvim-tree/nvim-web-devicons'
-  use "lukas-reineke/indent-blankline.nvim"
-
-  -- Needs organizing
+  use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
   use {
       'nvim-tree/nvim-tree.lua',
       requires = {
@@ -159,6 +165,11 @@ return require('packer').startup(function(use)
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+
+  -- Beautify
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use "lukas-reineke/indent-blankline.nvim"
   use('xiyaowong/nvim-transparent')
+
 end)
 
