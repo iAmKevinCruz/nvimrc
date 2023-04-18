@@ -67,9 +67,8 @@ require("catppuccin").setup({
 
 vim.cmd("set termguicolors")
 
-require("transparent").setup({
-  enable = true
-})
+-- this is all it needs to start. the toggle state is presserved on load
+require("transparent").setup()
 
 require'nvim-web-devicons'.setup {
   -- your personnal icons can go here (to override)

@@ -65,15 +65,34 @@ return require('packer').startup(function(use)
   use('epwalsh/obsidian.nvim')
   use('godlygeek/tabular') -- needed by vim-markdown
   use('preservim/vim-markdown') -- recommended for syntax highlighting, folding, etc if you're not 
-  -- install without yarn or npm
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-  -- use('vim-pandoc/vim-pandoc-syntax') -- needed by vim-markdown
-  -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -- Quality of life
+  -- use('github/copilot.vim')
+  use{
+    "madox2/vim-ai",
+    -- run = "./install.sh"
+    branch = 'next'
+  }
+  -- use ("zbirenbaum/copilot.lua")
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function ()
+  --   --   require("copilot_cmp").setup()
+  --     require("copilot_cmp").setup({
+  --       formatters = {
+  --         label = require("copilot_cmp.format").format_label_text,
+  --         -- insert_text = require("copilot_cmp.format").format_insert_text,
+  --         insert_text = require("copilot_cmp.format").remove_existing,
+  --         preview = require("copilot_cmp.format").deindent,
+  --       },
+  --     })
+  --   end
+  -- }
   use {
     'rmagatti/session-lens',
     requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
@@ -84,11 +103,12 @@ return require('packer').startup(function(use)
   use('tpope/vim-commentary')
   use('mbbill/undotree')
   use {
+
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
-    'm-demare/hlargs.nvim',
+    'm-memare/hlargs.nvim',
     requires = { 'nvim-treesitter/nvim-treesitter' }
   }
   use({
@@ -115,7 +135,6 @@ return require('packer').startup(function(use)
 
   -- LSP and Autocompletion
   -- use('tpope/vim-liquid')
-  use('j-hui/fidget.nvim')
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
   use({
     "glepnir/lspsaga.nvim",
@@ -154,7 +173,8 @@ return require('packer').startup(function(use)
     -- Navigation
   use('nvim-treesitter/playground')
   use('thePrimeagen/harpoon')
-  use ('chentoast/marks.nvim')
+  use('ggandor/lightspeed.nvim')
+  use('chentoast/marks.nvim')
   use('tpope/vim-fugitive')
   use('tpope/vim-surround')
   use("christoomey/vim-tmux-navigator") -- tmux & split window navigation

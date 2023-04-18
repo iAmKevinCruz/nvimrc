@@ -47,7 +47,6 @@ require("obsidian").setup({
   }
 })
 
-
 -- Keymaps for Obsidian
 vim.keymap.set('n', '<leader>ot', ':ObsidianToday<CR>')
 vim.keymap.set('n', '<leader>oT', ':ObsidianTemplate<CR>')
@@ -64,3 +63,7 @@ vim.keymap.set('n', '<leader>on', ':ObsidianNew ')
 vim.keymap.set('n', '<leader>om', ':ObsidianLink<CR>')
 vim.keymap.set('n', '<leader>ol', ':ObsidianLinkNew<CR>')
 
+
+-- ToDo : Tweak this plugin to have a shortcut that will open project notes. It will read 
+-- if I am in a git file. If I am, it will read the path and check if my vault has that file. If 
+-- if does it will open it, if it doesnt it will create it.

@@ -56,7 +56,7 @@ vim.keymap.set("n", "x", '"_x') -- delete code
 vim.keymap.set("i", "jk", '<ESC>')
 
 -- this will let me copy things into my system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<M-c>", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Clear search highjlight
@@ -120,3 +120,15 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- AI Remaps
+vim.keymap.set('n', '<leader>ai', ':AI ') -- complete line or selection. Can add instructions.
+vim.keymap.set('v', '<leader>ai', ':AI ') -- complete line or selection. Can add instructions.
+vim.keymap.set('n', '<leader>ae', ':AIEdit ') -- edit selection. Can add instructions.
+vim.keymap.set('v', '<leader>ae', ':AIEdit ') -- edit selection. Can add instructions.
+vim.keymap.set('n', '<leader>ac', ':AIChat<CR>') -- Enter chat.
+vim.keymap.set('n', '<leader>ar', ':AIRedo<CR>') -- Redo last AI command.
+vim.keymap.set('n', '<leader>amc', ":let g:vim_ai_chat['options']['model'] = 'gpt-'<Left>") -- Change chat model.
+vim.keymap.set('n', '<leader>ame', ":let g:vim_ai_edit['options']['model'] = 'gpt-'<Left>") -- Change edit model.
+vim.keymap.set('n', '<leader>ami', ":let g:vim_ai_complete['options']['model'] = 'gpt-'<Left>") -- Change complete model.
+
