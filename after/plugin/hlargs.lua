@@ -1,4 +1,4 @@
-require('hlargs').setup({ color = "#F6A6FF" })
+-- require('hlargs').setup({ color = "#F6A6FF" })
 
 -- require('hlargs').setup {
 --   color = '#ef9062',

@@ -107,10 +107,10 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  use {
-    'm-memare/hlargs.nvim',
-    requires = { 'nvim-treesitter/nvim-treesitter' }
-  }
+  -- use {
+  --   'm-memare/hlargs.nvim',
+  --   requires = { 'nvim-treesitter/nvim-treesitter' }
+  -- }
   use({
     "utilyre/barbecue.nvim",
     tag = "*",

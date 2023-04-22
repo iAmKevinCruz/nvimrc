@@ -21,12 +21,6 @@ if not lspkind_status then
   return
 end
 
-local has_copilot_cmp, copilot_cmp = pcall(require, "copilot_cmp")
-if not has_copilot_cmp then
-  return
-end
-
-
 -- this is for the copilot cmp
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
