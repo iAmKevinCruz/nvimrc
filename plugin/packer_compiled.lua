@@ -208,6 +208,11 @@ _G.packer_plugins = {
     path = "/Users/iMakeBabbies/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/iMakeBabbies/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/NvChad/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/iMakeBabbies/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -286,6 +291,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/iMakeBabbies/.local/share/nvim/site/pack/packer/start/tabular",
     url = "https://github.com/godlygeek/tabular"
+  },
+  ["tailwindcss-colorizer-cmp.nvim"] = {
+    config = { "\27LJ\2\nc\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23color_square_width\3\2\nsetup\30tailwindcss-colorizer-cmp\frequire\0" },
+    loaded = true,
+    path = "/Users/iMakeBabbies/.local/share/nvim/site/pack/packer/start/tailwindcss-colorizer-cmp.nvim",
+    url = "https://github.com/roobert/tailwindcss-colorizer-cmp.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
@@ -373,18 +384,22 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Config for: tailwindcss-colorizer-cmp.nvim
+time([[Config for tailwindcss-colorizer-cmp.nvim]], true)
+try_loadstring("\27LJ\2\nc\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\23color_square_width\3\2\nsetup\30tailwindcss-colorizer-cmp\frequire\0", "config", "tailwindcss-colorizer-cmp.nvim")
+time([[Config for tailwindcss-colorizer-cmp.nvim]], false)
 -- Config for: session-lens
 time([[Config for session-lens]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17session-lens\frequire\0", "config", "session-lens")
 time([[Config for session-lens]], false)
--- Config for: auto-session
-time([[Config for auto-session]], true)
-try_loadstring("\27LJ\2\n”\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\5\0\0\a~/\15~/Projects\16~/Downloads\6/\1\0\1\14log_level\nerror\nsetup\17auto-session\frequire\0", "config", "auto-session")
-time([[Config for auto-session]], false)
 -- Config for: nvim-neoclip.lua
 time([[Config for nvim-neoclip.lua]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
 time([[Config for nvim-neoclip.lua]], false)
+-- Config for: auto-session
+time([[Config for auto-session]], true)
+try_loadstring("\27LJ\2\n”\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\31auto_session_suppress_dirs\1\5\0\0\a~/\15~/Projects\16~/Downloads\6/\1\0\1\14log_level\nerror\nsetup\17auto-session\frequire\0", "config", "auto-session")
+time([[Config for auto-session]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]

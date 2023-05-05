@@ -65,6 +65,7 @@ cmp.setup({
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
     { name = "copilot" }, -- Add this line for copilot (chatGPT suggestion)
+    { name = "tailwindcss-colorizer-cmp" },
   }),
   -- configure lspkind for vs-code like icons
   formatting = {

@@ -160,6 +160,15 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-path'},         -- Optional
       {'saadparwaiz1/cmp_luasnip'}, -- Optional
       {'hrsh7th/cmp-nvim-lua'},     -- Optional
+      {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        -- optionally, override the default options:
+        config = function()
+          require("tailwindcss-colorizer-cmp").setup({
+            color_square_width = 2,
+          })
+        end
+      },
 
       -- Snippets
       {'L3MON4D3/LuaSnip'},             -- Required
@@ -190,6 +199,16 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
   use "lukas-reineke/indent-blankline.nvim"
   use('xiyaowong/nvim-transparent')
+  use('NvChad/nvim-colorizer.lua')
+  -- use({
+  --   "roobert/tailwindcss-colorizer-cmp.nvim",
+  --   -- optionally, override the default options:
+  --   config = function()
+  --     require("tailwindcss-colorizer-cmp").setup({
+  --       color_square_width = 2,
+  --     })
+  --   end
+  -- })
 
 end)
 
